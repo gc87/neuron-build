@@ -45,9 +45,9 @@ function compile_source_with_tag() {
     local branch=$3
 
     cd $neuron_dir
-    git clone -b $branch git@github.com:${user}/${repo}.git
+    # git clone -b $branch git@github.com:${user}/${repo}.git
     cd $repo
-    git submodule update --init
+    # git submodule update --init
     mkdir build && cd build
     cmake .. -DCMAKE_BUILD_TYPE=Release -DDISABLE_UT=ON \
 	-DTOOL_DIR=$tool_dir -DCOMPILER_PREFIX=$vendor \
@@ -61,7 +61,7 @@ function compile_source_with_tag() {
     fi
 }
 
-sudo rm -rf $neuron_dir/*
-mkdir -p $neuron_dir
-compile_source_with_tag $user neuron $branch
-compile_source_with_tag $user neuron-modules $branch
+# sudo rm -rf $neuron_dir/*
+# mkdir -p $neuron_dir
+compile_source_with_tag $user neuron main # $branch
+compile_source_with_tag $user neuron-modules mitsabishi-1e-3onedata #$branch
